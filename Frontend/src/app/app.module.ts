@@ -12,6 +12,8 @@ import { LoginComponent } from './components/login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterComponent } from './components/register/register.component';
 import { ChatComponent } from './components/chat/chat.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ChatGptServiceService } from './services/ChatGptService.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,8 +29,9 @@ import { ChatComponent } from './components/chat/chat.component';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ChatGptServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,14 +7,18 @@
 }
 
 .card-header{
-    background-color: #42ab49;
-    color: white;
+    background-color: #001A70;
+    color: rgb(216, 226, 235);
     font-weight: 700;
 }
 
 .card-body{
     padding: 0.5rem;
-    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAA1BMVEXX9cGqFPmxAAAASElEQVR4nO3BgQAAAADDoPlTX+AIVQEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwDcaiAAFXD1ujAAAAAElFTkSuQmCC');
+    background-color: #ffffff;
+}
+
+.te{
+    background-image: url('https://i.pinimg.com/736x/ee/c9/9a/eec99a27ba18b6eac28a66bd8eb8f48d.jpg');
 }
 
 .imgEnviar:active{
@@ -24,9 +28,10 @@
 .enviado{
     display: block;
     float: right;
-    background-color: #37803b;
+    background-color: #001A70;
     color: white;
     min-width: 50.01%;
+    max-width: 75.01%;
     border-radius: 10px;
     text-align: left;
 }
@@ -34,9 +39,10 @@
 .recibido{
     display: block;
     float: left;
-    background-color: #42ab49;
+    background-color: #2DCCD3;
     color: white;
     min-width: 50.01%;
+    max-width: 75.01%;
     border-radius: 10px;
     text-align: left;
 }

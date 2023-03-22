@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { ChatGptServiceService } from 'src/app/services/ChatGptService.service';
 
 @Component({
   selector: 'app-chat',
@@ -10,26 +11,10 @@ export class ChatComponent implements OnInit {
   nuevoMensaje: string = "";
   mostrarChat:boolean = true;
   mensajes: any =[
-    {
-      emisor: "1uYd5joHIxWIjubXJWieta2CbNg2",
-      texto: "Hola"
-    },
-    {
-      emisor: "chatbot",
-      texto: "Hola perro"
-    },
-    {
-      emisor: "1uYd5joHIxWIjubXJWieta2CbNg2",
-      texto: "que ases"
-    },
-    {
-      emisor: "chatbot",
-      texto: "ni miershde"
-    }
   ];
   usuarioLogueado: any;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private chatgptservice: ChatGptServiceService) { }
 
   ngOnInit(): void {
     this.authService.getUserLogged().subscribe(usuario=> {
@@ -48,11 +33,27 @@ export class ChatComponent implements OnInit {
     }
 
     this.mensajes.push(mensaje)
+    const mensajeEnviado = {
+      question: this.nuevoMensaje
+    }
+    this.chatgptservice.getRespuestaChatGpt(mensajeEnviado).subscribe(res => {
+      let respuesta = {
+        emisor: 'wannachat',
+        texto: res[0].text
+      }
+      this.mensajes.push(respuesta)
+      setTimeout(() => {
+        this.scrollToTheLastElementByClassName()
+      }, 10);
+    }, err => {
+      console.log(err)
+    })
     this.nuevoMensaje = "";
-
+    
     setTimeout(() => {
       this.scrollToTheLastElementByClassName()
-    }, 30);
+    }, 10);
+    
     
   }
 
@@ -60,9 +61,8 @@ export class ChatComponent implements OnInit {
     let elements=document.getElementsByClassName('msj');
     let ultimo: any = elements[(elements.length-1)];
     let toppos=ultimo.offSetTop;
-
     //@ts-ignore
-    document.getElementById('contenedorMensajes')?.scrollTop=toppos;
+    document.getElementById('contenedorMensajes')?.scrollTop=1000000;
   }
 
 }
