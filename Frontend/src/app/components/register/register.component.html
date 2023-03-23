@@ -44,18 +44,18 @@
                 </div>
 
                 <div class="input-group">
-                  <input type="text" class="form-input" name="form-input" [(ngModel)]="usuario.name">
-                  <label class="label" for="reg-user">Nombre</label>
+                  <input type="text" class="form-input" placeholder="Ingrese su nombre" name="form-input" [(ngModel)]="usuario.name">
+                  <label class="label" for="reg-user"></label>
                 </div>
 
                 <div class="input-group">
-                    <input type="text" class="form-input" name="form-input" id="reg-user" [(ngModel)]="usuario.email">
-                    <label class="label" for="reg-user">Correo</label>
+                    <input type="text" class="form-input" placeholder="Correo" placeholder="Ingrese su correo" name="form-input" id="reg-user" [(ngModel)]="usuario.email">
+                    <label class="label" for="reg-user"></label>
                 </div>
 
                 <div class="input-group">
-                    <input type="password" class="form-input" name="form-input" id="reg-pass" [(ngModel)]="usuario.password">
-                    <label class="label" for="reg-pass">Contraseña</label>
+                    <input type="password" class="form-input" placeholder="Ingrese su contraseña" name="form-input" id="reg-pass" [(ngModel)]="usuario.password">
+                    <label class="label" for="reg-pass"></label>
                 </div>
 
                 
@@ -63,7 +63,8 @@
                 <div class="input-group">
                   
                   <button class="btn btn-primary btn-block m-2"  value="Registrate" (click)="registrarse()">Registrar</button>
-                    <p>Ya tienes cuenta? <a href="#" class="alt-form">Ingresa aquí</a></p>
+                  <label>Ya tienes cuenta? <a routerLink="/login">Iniciar Sesión</a></label>
+                  
 
 
 

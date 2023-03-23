@@ -44,14 +44,15 @@
                 </div>
 
                 <div class="input-group">
-                    <input type="text" class="form-input" name="form-input" id="user" [(ngModel)]="usuario.email">
-                    <label class="label" for="user">Correo</label>
+                    <label class="label" for="user"></label>
+                    <input type="text" class="form-input" placeholder="Usuario" name="form-input" id="user" [(ngModel)]="usuario.email">
                 </div>
 
                 <div class="input-group">
-                    <input type="password" class="form-input" name="form-input" id="pass"
+                    <label class="label" for="pass"></label>
+                    <input type="password" class="form-input" placeholder="Contraseña" name="form-input" id="pass"
                         [(ngModel)]="usuario.password">
-                    <label class="label" for="pass">Contraseña</label>
+                    
                 </div>
 
                 <div class="input-group">
@@ -68,8 +69,6 @@
 
     </div>
 
-    <script src="../../../assets/js/jquery-3.3.1.min.js"></script>
-    <script src="../../../assets/js/form.js"></script>
 </body>
 
 </html>
