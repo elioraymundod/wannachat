@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +16,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { ChatComponent } from './components/chat/chat.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatGptServiceService } from './services/ChatGptService.service';
+import { CatalogoInteresesComponent } from './components/catalogo-intereses/catalogo-intereses.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +24,7 @@ import { ChatGptServiceService } from './services/ChatGptService.service';
     LoginComponent,
     RegisterComponent,
     ChatComponent,
+    CatalogoInteresesComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import { ChatGptServiceService } from './services/ChatGptService.service';
     FormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule,
+    MatCardModule
   ],
   providers: [ChatGptServiceService],
   bootstrap: [AppComponent]
