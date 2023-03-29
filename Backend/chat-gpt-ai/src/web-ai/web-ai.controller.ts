@@ -16,26 +16,28 @@ import { ErrorsInterceptor } from './interceptors/errors/errors.interceptor';
 export class WebAiController {
   constructor(private readonly webAiSvc: WebAiService) {}
 
+  /**
+   * The function takes in a JSON object, and returns a string
+   * @param {ModelUser} data - ModelUser - this is the data that is passed in from the front end.
+   * @returns The answer is being returned.
+   */
   @Post('/message')
   @UsePipes(ValidationPipe)
   @ApiOperation({
     description:
       '## Se utiliza para realizar una pregunta basica a ChatGPT con modelo `text-davinci-003`',
   })
-  getAnswer(@Body() data: ModelAnswer) {
-    return this.webAiSvc.getModelAnswer(data.question);
+  async getAnswer(@Body() data: ModelUser) {
+    const { question } = data;
+    return await this.webAiSvc.getModelAnswer(question);
   }
 
-  @Post('/start/chat')
-  @UsePipes(ValidationPipe)
-  @ApiOperation({
-    description:
-      '## Se inicia la conversación con el bot con el modelo `gpt-3.5-turbo`',
-  })
-  @UseInterceptors(ErrorsInterceptor)
-  async startChat(@Body() data: ModelUser) {
-    return await this.webAiSvc.startChat(data.name);
-  }
+  /**
+   * It takes in a JSON object with two properties, role and content, and returns a JSON object with
+   * two properties, role and content
+   * @param {ModelAnswer} data - ModelAnswer
+   * @returns The return value is the response from the webAiSvc.askQuestionUser() method.
+   */
   @Post('/conversation/chat-bot')
   @UsePipes(ValidationPipe)
   @ApiOperation({
@@ -44,6 +46,7 @@ export class WebAiController {
   })
   @UseInterceptors(ErrorsInterceptor)
   async getModelAnswerChat(@Body() data: ModelAnswer) {
-    return await this.webAiSvc.askQuestionUser(data.question);
+    const { role, content } = data;
+    return await this.webAiSvc.askQuestionUser(role, content);
   }
 }

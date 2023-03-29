@@ -1,5 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsNotEmpty, IsString } from "class-validator";
+import { ChatCompletionRequestMessageRoleEnum } from "openai";
 
 export class ModelAnswer {
   @IsString()
@@ -8,7 +9,15 @@ export class ModelAnswer {
     type: String,
     description: 'Este campo es requerido',
   })
-  question: string;
+  role: ChatCompletionRequestMessageRoleEnum;
+
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty({
+    type: String,
+    description: 'Este campo es requerido',
+  })
+  content: string;
 }
 
 export class ModelUser {
@@ -18,5 +27,5 @@ export class ModelUser {
     type: String,
     description: 'Este campo es requerido',
   })
-  name: string;
+  question: string;
 }

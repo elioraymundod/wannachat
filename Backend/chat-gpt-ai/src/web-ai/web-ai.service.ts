@@ -6,6 +6,7 @@ import {
   ChatCompletionRequestMessage,
   CreateModerationRequest,
   CreateChatCompletionRequest,
+  ChatCompletionRequestMessageRoleEnum,
 } from 'openai';
 import { getTokens } from './lib/tokenizer';
 const DEFAULT_MODEL_ID = 'text-davinci-003';
@@ -26,6 +27,13 @@ export class WebAiService {
     this.openai = new OpenAIApi(configuration);
   }
 
+  /**
+   * It takes a question and a temperature as parameters, and returns a response from the OpenAI API
+   * @param {string} question - The question you want to ask the model.
+   * @param {number} [temperature] - A float value controlling randomness in boltzmann distribution.
+   * The higher the value, the more random the text. Defaults to 0 (argmax sampling).
+   * @returns The response from the OpenAI API.
+   */
   async getModelAnswer(question: string, temperature?: number) {
     try {
       const params: CreateCompletionRequest = {
@@ -41,32 +49,39 @@ export class WebAiService {
       }
       return response.data;
     } catch (error) {
-      console.error('error message', error);
-    }
-  }
-
-  async startChat(nombre: string) {
-    const role = 'assistant';
-    const content = `Buen día ${nombre} es un gusto saludarte`;
-    try {
-      return await this.getModelAnswerChat(role, content);
-    } catch (error) {
-      //console.error('error en startChat');
+      //console.error('error message', error);
       return error;
     }
   }
 
-  async askQuestionUser(question: string) {
-    const role = 'user';
+  /**
+   * @description The function takes in a role and a question, and returns a model answer
+   * @param {ChatCompletionRequestMessageRoleEnum} role - *system/user/assistant*
+   * @param {string} content - The question that the user is asking.
+   * @returns The model answer for the question
+   */
+  async askQuestionUser(
+    role: ChatCompletionRequestMessageRoleEnum,
+    content: string,
+  ) {
     try {
-      return await this.getModelAnswerChat(role, question);
+      return await this.getModelAnswerChat(role, content);
     } catch (error) {
       //console.error('error en askQuestionUser');
       return error;
     }
   }
 
-  async getModelAnswerChat(role: any, content: string) {
+  /**
+   * @description It takes a role and a content, and returns a response
+   * @param {ChatCompletionRequestMessageRoleEnum} role - *system/user/assistant*
+   * @param {string} content - The text of the message.
+   * @returns The return is a string with the response of the bot.
+   */
+  async getModelAnswerChat(
+    role: ChatCompletionRequestMessageRoleEnum,
+    content: string,
+  ) {
     try {
       const reqMessages: ChatCompletionRequestMessage[] = [{ role, content }];
       if (!reqMessages) {
@@ -88,7 +103,7 @@ export class WebAiService {
       //console.log('results', results);
       if (results.flagged) {
         // throw new Error('palabra inapropiada');
-        //return 'palabra inapropiada';
+        return 'palabra inapropiada';
       }
       const prompt = `Eres asistente IA personalizado para ayudar a comprar zapatos. Tu nombre es ${NAME_BOT}:
     `;
@@ -140,7 +155,6 @@ export class WebAiService {
       const description =
         error.response.data.error.message ??
         'No se pudo recuperar error message';
-
       //return error;
       throw new HttpException(messages, status, {
         description,
