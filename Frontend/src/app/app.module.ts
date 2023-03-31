@@ -17,6 +17,7 @@ import { ChatComponent } from './components/chat/chat.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ChatGptServiceService } from './services/ChatGptService.service';
 import { CatalogoInteresesComponent } from './components/catalogo-intereses/catalogo-intereses.component';
+import { UsersServiceService } from './services/Users.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,7 @@ import { CatalogoInteresesComponent } from './components/catalogo-intereses/cata
     MatGridListModule,
     MatCardModule
   ],
-  providers: [ChatGptServiceService],
+  providers: [ChatGptServiceService, UsersServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

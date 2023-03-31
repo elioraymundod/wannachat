@@ -12,10 +12,13 @@
     
     <div class="card-body">
         <div id="contenedorMensajes" class="contenedorMensajes h-100">
-            <p *ngFor="let mensaje of mensajes" class="msj p-2"
+            <div *ngFor="let mensaje of mensajes" class="msj p-2" style="margin-bottom: 3px;"
             [ngClass]="(usuarioLogueado.uid==mensaje.emisor)?'enviado' : 'recibido'">
                 {{mensaje.texto}}
-            </p>
+            </div>
+            <div *ngIf="showProgressBar">
+                <img src="https://i.gifer.com/origin/ea/ea3fa7a07d9cb563d67168a6e45ed4e1.gif" width="200px" style="float: left;">
+            </div>
         </div>    
     </div>
 

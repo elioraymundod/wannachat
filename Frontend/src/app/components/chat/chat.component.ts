@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { ChatGptServiceService } from 'src/app/services/ChatGptService.service';
+import { UsersServiceService } from 'src/app/services/Users.service';
 
 @Component({
   selector: 'app-chat',
@@ -10,21 +11,35 @@ import { ChatGptServiceService } from 'src/app/services/ChatGptService.service';
 export class ChatComponent implements OnInit {
   nuevoMensaje: string = "";
   mostrarChat:boolean = true;
-  mensajes: any =[
-  ];
+  mensajes: any =[];
+  listSaludos: any = [];
+  listProductos: any = [];
+  listBusqueda: any = [];
   usuarioLogueado: any;
+  usuariodb: any;
+  showProgressBar: boolean = false;
 
-  constructor(private authService: AuthService, private chatgptservice: ChatGptServiceService) { }
+  constructor(private authService: AuthService, private chatgptservice: ChatGptServiceService, private usersService: UsersServiceService) { }
 
   ngOnInit(): void {
     this.authService.getUserLogged().subscribe(usuario=> {
       this.usuarioLogueado = usuario;
-      console.log(this.usuarioLogueado)
+      this.usersService.getUserById(this.usuarioLogueado.uid).subscribe(user => {
+        this.usuariodb = user[0];
+        let menasjeInicial = {
+          emisor: 'wannachat',
+          texto: `Hola ${this.usuariodb.nombre}, mi nombre es WannaChat. Cuéntame, ¿cómo puedo ayudarte hoy?`
+        }    
+        this.mensajes.push(menasjeInicial)
+      })
     })
+
+
+    
   }
 
   enviarMensaje(){
-
+    this.showProgressBar = true;
     if(this.nuevoMensaje == "") return;
 
     let mensaje = {
@@ -36,6 +51,8 @@ export class ChatComponent implements OnInit {
     const mensajeEnviado = {
       question: this.nuevoMensaje
     }
+
+    // Buscar respuesta
     this.chatgptservice.getRespuestaChatGpt(mensajeEnviado).subscribe(res => {
       let respuesta = {
         emisor: 'wannachat',
@@ -44,10 +61,12 @@ export class ChatComponent implements OnInit {
       this.mensajes.push(respuesta)
       setTimeout(() => {
         this.scrollToTheLastElementByClassName()
+        this.showProgressBar = false;
       }, 10);
     }, err => {
       console.log(err)
     })
+
     this.nuevoMensaje = "";
     
     setTimeout(() => {

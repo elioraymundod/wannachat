@@ -1,0 +1,51 @@
+create database wannachat;
+
+use wannachat;
+
+CREATE TABLE users (
+user_id VARCHAR(30) NOT NULL AUTO_INCREMENT,
+username VARCHAR(50) NOT NULL,
+password VARCHAR(255) NOT NULL,
+nombre VARCHAR(30),
+PRIMARY KEY (user_id)
+);
+
+CREATE TABLE categorias (
+categoria_id INT NOT NULL AUTO_INCREMENT,
+nombre VARCHAR(50) NOT NULL,
+descripcion VARCHAR(255) NOT NULL,
+PRIMARY KEY (categoria_id)
+);
+
+CREATE TABLE productos (
+producto_id INT NOT NULL AUTO_INCREMENT,
+categoria INT NOT NULL,
+nombre VARCHAR(50) NOT NULL,
+descripcion VARCHAR(255) NOT NULL,
+PRIMARY KEY (producto_id),
+CONSTRAINT FOREIGN KEY FK_PROD_CATEG (categoria) references categorias(categoria_id)
+);
+
+CREATE TABLE preferencias_usuario (
+preferencia_id INT NOT NULL AUTO_INCREMENT,
+usuario varchar(30) NOT NULL,
+preferencias varchar(1000) NOT NULL,
+PRIMARY KEY (preferencia_id),
+FOREIGN KEY (usuario) REFERENCES users(user_id)
+);
+
+CREATE TABLE categorias_claves (
+cat_clav_id INT NOT NULL AUTO_INCREMENT,
+categoria varchar(30) NOT NULL,
+PRIMARY KEY (cat_clav_id)
+);
+
+
+CREATE TABLE palabras_claves (
+palabra_id INT NOT NULL AUTO_INCREMENT,
+palabra varchar(30) NOT NULL,
+categoria int not null,
+PRIMARY KEY (palabra_id),
+FOREIGN KEY (categoria) REFERENCES categorias_claves(cat_clav_id)
+);
+

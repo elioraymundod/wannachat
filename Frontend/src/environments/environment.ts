@@ -14,7 +14,8 @@ export const environment = {
     appId: "1:219733044318:web:a8264e60400c93b45558cf",
     measurementId: "G-PJHKS2KP1Q"
   },
-  baseUrl: 'http://localhost:3000',
+  baseUrlChatGpt: 'http://localhost:3000',
+  baseUrlDB: 'http://localhost:3001',
 };
 
 /*

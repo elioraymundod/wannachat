@@ -1,0 +1,42 @@
+/* Insert Usuarios */
+insert into wannachat.users (user_id, username, password, nombre) values ('1uYd5joHIxWIjubXJWieta2CbNg2', 'raymundoelio@gmail.com', 'raymundoelio', 'Elio');
+
+
+/* Insert Usuarios */
+insert into wannachat.categorias (nombre, descripcion) values ('zapatos', 'zapatos');
+insert into wannachat.categorias (nombre, descripcion) values ('playeras', 'playeras');
+insert into wannachat.categorias (nombre, descripcion) values ('camisetas', 'camisetas');
+insert into wannachat.categorias (nombre, descripcion) values ('tennis', 'tennis');
+insert into wannachat.categorias (nombre, descripcion) values ('botas', 'botas');
+
+/* Insert Productos */
+insert into wannachat.productos (nombre, descripcion, categoria) values ('Zapatos formales MD007', 'Zapatos formales MD007', 1);
+insert into wannachat.productos (nombre, descripcion, categoria) values ('Playera polo', 'Playera polo', 2);
+insert into wannachat.productos (nombre, descripcion, categoria) values ('Camiseta blanca', 'Camiseta blanca', 3);
+insert into wannachat.productos (nombre, descripcion, categoria) values ('Tennis Nike MD98', 'Tennis Nike MD98', 4);
+insert into wannachat.productos (nombre, descripcion, categoria) values ('Botas piel de cebra', 'Botas piel de cebra', 5);
+
+/* Insert Preferencias Usuario */
+insert into wannachat.preferencias_usuario (usuario, preferencias) values ('1uYd5joHIxWIjubXJWieta2CbNg2', 'zapatos');
+
+/* Categorias claves */
+insert into wannachat.categorias_claves (categoria) values ('saludos');
+insert into wannachat.categorias_claves (categoria) values ('productos');
+insert into wannachat.categorias_claves (categoria) values ('busqueda');
+
+/* Palabras claves */
+insert into wannachat.palabras_claves (palabra, categoria) values ('hola', 1);
+insert into wannachat.palabras_claves (palabra, categoria) values ('dias', 1);
+insert into wannachat.palabras_claves (palabra, categoria) values ('noches', 1);
+insert into wannachat.palabras_claves (palabra, categoria) values ('tardes', 1);
+insert into wannachat.palabras_claves (palabra, categoria) values ('zapatos', 2);
+insert into wannachat.palabras_claves (palabra, categoria) values ('playeras', 2);
+insert into wannachat.palabras_claves (palabra, categoria) values ('camisetas', 2);
+insert into wannachat.palabras_claves (palabra, categoria) values ('tennis', 2);
+insert into wannachat.palabras_claves (palabra, categoria) values ('botas', 2);
+insert into wannachat.palabras_claves (palabra, categoria) values ('buscando', 3);
+insert into wannachat.palabras_claves (palabra, categoria) values ('busqueda', 3);
+insert into wannachat.palabras_claves (palabra, categoria) values ('quiero', 3);
+insert into wannachat.palabras_claves (palabra, categoria) values ('ver', 3);
+insert into wannachat.palabras_claves (palabra, categoria) values ('recomendacion', 3);
+insert into wannachat.palabras_claves (palabra, categoria) values ('recomiendes', 3);
