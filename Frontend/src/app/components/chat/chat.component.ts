@@ -10,7 +10,7 @@ import { UsersServiceService } from 'src/app/services/Users.service';
 })
 export class ChatComponent implements OnInit {
   nuevoMensaje: string = "";
-  mostrarChat:boolean = true;
+  mostrarChat:boolean = false;
   mensajes: any =[];
   listSaludos: any = [];
   listProductos: any = [];
