@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit {
         })
         return;
       };
+      localStorage.setItem('user','Flavio')
       this.router.navigate(['/panelDeControl'])
     }).catch(err=>{
     })

@@ -19,6 +19,7 @@ export class PanelDeControlComponent implements OnInit {
     private authService: AuthService) {
     this.authService.getUserLogged().subscribe(res => {
       this.userLogged = res;
+      console.log("mostrando", res)
     })
   }
 

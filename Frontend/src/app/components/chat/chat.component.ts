@@ -24,7 +24,7 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
     this.authService.getUserLogged().subscribe(usuario=> {
       this.usuarioLogueado = usuario;
-      this.usersService.getUserById(this.usuarioLogueado.uid).subscribe(user => {
+      this.usersService.getUserById(usuario?.uid).subscribe(user => {
         this.usuariodb = user[0];
         let menasjeInicial = {
           emisor: 'wannachat',
@@ -32,6 +32,7 @@ export class ChatComponent implements OnInit {
         }    
         this.mensajes.push(menasjeInicial)
       })
+      console.log("aaaaaaaaaaaaaa",usuario?.uid)
     })
 
 
