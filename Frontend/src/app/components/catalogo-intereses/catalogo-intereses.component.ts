@@ -30,7 +30,7 @@ export class CatalogoInteresesComponent implements OnInit {
 
   public listarIntereses(a: string, b: string) {
     let interesesTemp = {
-      "usuario": a,
+     // "usuario": a,
       "interes": b
     }
     this.listaIntereses.push(interesesTemp);

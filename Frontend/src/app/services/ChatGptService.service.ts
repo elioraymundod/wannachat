@@ -15,6 +15,6 @@
         }
 
         public getRespuestaChatGpt(question: any): Observable<any> {
-            return this.http.post(`${this.baseUrlChatGpt}/web-ai/message`, question)
+            return this.http.post(`${this.baseUrlChatGpt}/web-ai/conversation/chat-bot`, question)
         }
     }

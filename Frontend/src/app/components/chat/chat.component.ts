@@ -18,10 +18,17 @@ export class ChatComponent implements OnInit {
   usuarioLogueado: any;
   usuariodb: any;
   showProgressBar: boolean = false;
+  role: string = 'assistant';
 
-  constructor(private authService: AuthService, private chatgptservice: ChatGptServiceService, private usersService: UsersServiceService) { }
+  constructor(private authService: AuthService, private chatgptservice: ChatGptServiceService, private usersService: UsersServiceService) {
+
+    this.mensajes = [];
+    
+   }
 
   ngOnInit(): void {
+    this.mensajes = [];
+   // window.location.reload();
     this.authService.getUserLogged().subscribe(usuario=> {
       this.usuarioLogueado = usuario;
       this.usersService.getUserById(usuario?.uid).subscribe(user => {
@@ -50,19 +57,21 @@ export class ChatComponent implements OnInit {
 
     this.mensajes.push(mensaje)
     const mensajeEnviado = {
-      question: this.nuevoMensaje
+      role: this.role,
+      content: this.nuevoMensaje
     }
 
     // Buscar respuesta
     this.chatgptservice.getRespuestaChatGpt(mensajeEnviado).subscribe(res => {
       let respuesta = {
         emisor: 'wannachat',
-        texto: res[0].text
+        texto: res[0].message.content
       }
       this.mensajes.push(respuesta)
       setTimeout(() => {
         this.scrollToTheLastElementByClassName()
         this.showProgressBar = false;
+        this.role = 'user';
       }, 10);
     }, err => {
       console.log(err)
