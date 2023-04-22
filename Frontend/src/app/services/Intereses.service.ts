@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 @Injectable({
     providedIn: 'root'
 })
-export class UsersServiceService {
+export class InteresesService {
     baseUrlDB: string;
 
 
@@ -14,12 +14,7 @@ export class UsersServiceService {
         this.baseUrlDB = environment.baseUrlDB;
     }
 
-    public insertUser(usuario: any): Observable<any> {
-        console.log('creando', usuario)
-        return this.http.post(`${this.baseUrlDB}/usuarios`, usuario)
-    }
-
-    public getUserById(usuario: any): Observable<any> {
-        return this.http.get<any>(`${this.baseUrlDB}/get/usuarios/${usuario}`)
+    public insertPreferencias(preferencias: any): Observable<any> {
+        return this.http.post(`${this.baseUrlDB}/preferencias`, preferencias)
     }
 }

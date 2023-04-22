@@ -5,9 +5,11 @@ import { AngularFirestore, AngularFirestoreCollection } from "@angular/fire/comp
   providedIn: 'root'
 })
 export class DataBaseService {
+  usuarioLogueado;
 
-
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore) {
+    this.usuarioLogueado = '';
+   }
 
 
   //Crea un nuevo dato   

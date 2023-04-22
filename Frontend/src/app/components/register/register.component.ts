@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsersServiceService } from 'src/app/services/Users.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { DataBaseService } from 'src/app/services/database.service';
 import Swal from 'sweetalert2';
@@ -22,23 +23,37 @@ export class RegisterComponent implements OnInit {
 
   }
 
-  constructor(private authService: AuthService, private database: DataBaseService, private router: Router) { }
+  constructor(private authService: AuthService, private database: DataBaseService, private router: Router, private userServices: UsersServiceService) { }
 
   registrarse() {
     const { email, password } = this.usuario;
     this.authService.register(email, password).then(user => {
-      console.log("se registro---------->>> : ", user);
-      console.log('a ver si imprime algo -----------------', user?.additionalUserInfo?.isNewUser)
+      //console.log("se registro---------->>> : ", user);
+      //console.log('a ver si imprime algo -----------------', user?.additionalUserInfo?.isNewUser)
       if (user?.additionalUserInfo?.isNewUser) {
         console.log("USUARIO NUEVO CREADO")
         this.database.crear('users', this.usuario);
-        Swal.fire({
-          title: 'Excelente!',
-          text: 'El usuario ha sido registrado con éxito',
-          icon: 'info',
-          confirmButtonText: 'OK'
+        this.router.navigate(['/intereses']);
+
+        this.authService.getUserLogged().subscribe((usuario: any) => {
+          const newUser: any = [
+            {
+              user_id: usuario.uid,
+              username: this.usuario.email,
+              password: this.usuario.password,
+              nombre: this.usuario.name
+            }
+          ]
+
+          this.userServices.insertUser(newUser[0]).subscribe(res => {
+            Swal.fire({
+              title: 'Excelente!',
+              text: 'El usuario ha sido registrado con éxito',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            })
+          });
         })
-        this.router.navigate(['/panelDeControl']);
 
       } else if (password.length < 6) {
         Swal.fire({

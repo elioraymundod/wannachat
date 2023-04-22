@@ -6,9 +6,8 @@ import firebase from 'firebase/compat/app';
 })
 export class AuthService {
 
-  constructor(private afauth: AngularFireAuth) { }
-
-
+  constructor(private afauth: AngularFireAuth) {
+   }
 
   async register(email: string, password: string) {
     try {
@@ -45,6 +44,5 @@ export class AuthService {
   logout() {
     this.afauth.signOut();
   }
-
 
 }
