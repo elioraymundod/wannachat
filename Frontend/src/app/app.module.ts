@@ -19,6 +19,7 @@ import { ChatGptServiceService } from './services/ChatGptService.service';
 import { CatalogoInteresesComponent } from './components/catalogo-intereses/catalogo-intereses.component';
 import { UsersServiceService } from './services/Users.service';
 import { InteresesService } from './services/Intereses.service';
+import { PrincipalWannaComponent } from './components/principal-wanna/principal-wanna.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,6 +28,7 @@ import { InteresesService } from './services/Intereses.service';
     RegisterComponent,
     ChatComponent,
     CatalogoInteresesComponent,
+    PrincipalWannaComponent,
   ],
   imports: [
     BrowserModule,
