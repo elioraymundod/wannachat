@@ -29,3 +29,14 @@ export class ModelUser {
   })
   question: string;
 }
+
+export class IdUser {
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty({
+    type: String,
+    description: 'Este campo es requerido',
+  })
+  idUsuario: string;
+}
+

@@ -7,7 +7,7 @@ import {
   ValidationPipe,
 } from '@nestjs/common';
 import { WebAiService } from './web-ai.service';
-import { ModelAnswer, ModelUser } from './models/model-answer';
+import { IdUser, ModelAnswer, ModelUser } from './models/model-answer';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ErrorsInterceptor } from './interceptors/errors/errors.interceptor';
 
@@ -48,5 +48,24 @@ export class WebAiController {
   async getModelAnswerChat(@Body() data: ModelAnswer) {
     const { role, content } = data;
     return await this.webAiSvc.askQuestionUser(role, content);
+  }
+
+
+  /**
+   * It takes in a JSON object with two properties, role and content, and returns a JSON object with
+   * two properties, role and content
+   * @param {IdUser} data - ModelAnswer
+   * @returns User data
+   */
+  @Post('/get/usuario')
+  @UsePipes(ValidationPipe)
+  @ApiOperation({
+    description:
+      'Metodo para obtener la informacion de un usuario',
+  })
+  @UseInterceptors(ErrorsInterceptor)
+  async getUserById(@Body() data: IdUser) {
+    const { idUsuario } = data;
+    return await this.webAiSvc.getUser(idUsuario);
   }
 }

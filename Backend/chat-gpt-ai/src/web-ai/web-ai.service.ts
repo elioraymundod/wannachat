@@ -7,8 +7,10 @@ import {
   CreateModerationRequest,
   CreateChatCompletionRequest,
   ChatCompletionRequestMessageRoleEnum,
+  UserRequestMessage,
 } from 'openai';
 import { getTokens } from './lib/tokenizer';
+import { UserRepository } from './repositories/user-repository';
 const DEFAULT_MODEL_ID = 'text-davinci-003';
 const MODEL_ID_TURBO = 'gpt-3.5-turbo';
 const DEFAULT_TEMPERATURE = 0.6;
@@ -19,7 +21,7 @@ export class WebAiService {
   private openai: OpenAIApi;
   private OPENAI_KEY = process.env.OPENAI_API_KEY;
 
-  constructor() {
+  constructor(private userRepository: UserRepository) {
     const configuration = new Configuration({
       organization: process.env.ORGANIZATION_ID,
       apiKey: this.OPENAI_KEY,
@@ -160,5 +162,36 @@ export class WebAiService {
         description,
       });
     }
+  }
+
+
+   /**
+   * @description The function takes in a role and a question, and returns a model answer
+   * @param {ChatCompletionRequestMessageRoleEnum} role - *system/user/assistant*
+   * @param {string} idUsuario - Id user
+   * @returns The model answer for the question
+   */
+   async getUser(
+    idUsuario: string,
+  ) {
+    try {
+      return await this.getUserById(idUsuario);
+    } catch (error) {
+      //console.error('error en askQuestionUser');
+      return error;
+    }
+  }
+
+
+
+  /**
+   * @description It takes an ID, and returns a response
+   * @param {string} content - The text of the message.
+   * @returns The return is a string with the name of the user
+   */
+  async getUserById(
+    user: string,
+  ) {
+    return await this.userRepository.getUser(user);
   }
 }
