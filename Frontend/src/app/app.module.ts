@@ -20,6 +20,7 @@ import { CatalogoInteresesComponent } from './components/catalogo-intereses/cata
 import { UsersServiceService } from './services/Users.service';
 import { InteresesService } from './services/Intereses.service';
 import { PrincipalWannaComponent } from './components/principal-wanna/principal-wanna.component';
+import {MatButtonModule} from '@angular/material/button';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +40,8 @@ import { PrincipalWannaComponent } from './components/principal-wanna/principal-
     BrowserAnimationsModule,
     HttpClientModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [ChatGptServiceService, UsersServiceService, InteresesService],
   bootstrap: [AppComponent]

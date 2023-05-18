@@ -291,6 +291,14 @@ section .main .button:hover i{
     color: white;
 }
 
+  .btn{
+    text-decoration: none;
+    padding: 10px 40px;
+    
+    background: linear-gradient(to right, #c72092 , #6c14d0);
+    color: white;
+}
+
 
 /*About*/
 
