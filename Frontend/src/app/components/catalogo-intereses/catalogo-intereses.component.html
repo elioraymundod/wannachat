@@ -80,7 +80,7 @@
                 <div class="products_text">
                     <h2>Tenis</h2>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Felicidad es… Lucir zapatos increíbles
                     </p>
                     <!-- <h3>$100.99</h3> -->
                     <div class="products_star">
@@ -91,6 +91,7 @@
                         <i class="fa-solid fa-star"></i>
                     </div>
                     <button *ngIf="zapato" (click)="listarIntereses('Usuario','Zapato')" class="btn " >Añadir Preferencia</button>
+                    <button *ngIf="rzapato" (click)="RemoverIntereses('Zapato')" class="btn " >Remover Preferencia</button>
                     <!-- <a href="#" class="btn">Añadir Preferencia</a> -->
                 </div>
 
@@ -98,7 +99,7 @@
 
             <div class="card">
 
-                <!-- <div class="small_card">
+               <!--  <div class="small_card">
                     <i class="fa-solid fa-heart"></i>
                     <i class="fa-solid fa-share"></i>
                 </div> -->
@@ -110,7 +111,7 @@
                 <div class="products_text">
                     <h2>Playeras</h2>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Siempre hay espacio para compar nuevas playeras
                     </p>
                     <!-- <h3>$200.99</h3> -->
                     <div class="products_star">
@@ -121,6 +122,7 @@
                         <i class="fa-solid fa-star-half-stroke"></i>
                     </div>
                     <button *ngIf="playera" (click)="listarIntereses('Usuario','playera')" class="btn " >Añadir Preferencia</button>
+                    <button *ngIf="rplayera" (click)="RemoverIntereses('playera')" class="btn " >Remover Preferencia</button>
                     <!-- <a href="#" class="btn">Añadir Preferencia</a> -->
                 </div>
 
@@ -140,7 +142,7 @@
                 <div class="products_text">
                     <h2>Sudaderas</h2>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Mereces Sudaderas perfectas… Y para tí las tenemos.
                     </p>
                     <!-- <h3>$175.99</h3> -->
                     <div class="products_star">
@@ -151,6 +153,7 @@
                         <i class="fa-regular fa-star"></i>
                     </div>
                     <button *ngIf="sudadera" (click)="listarIntereses('Usuario','sudadera')" class="btn " >Añadir Preferencia</button>
+                    <button *ngIf="rsudadera" (click)="RemoverIntereses('sudadera')" class="btn " >Remover Preferencia</button>
                     <!-- <a href="#" class="btn">Añadir Preferencia</a> -->
                 </div>
 
@@ -170,7 +173,7 @@
                 <div class="products_text">
                     <h2>Gorras</h2>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Felicidad es… Lucir gorras increíbles 
                     </p>
                     <!-- <h3>$120.99</h3> -->
                     <div class="products_star">
@@ -181,6 +184,7 @@
                         <i class="fa-regular fa-star"></i>
                     </div>
                     <button *ngIf="gorra" (click)="listarIntereses('Usuario','gorra')" class="btn " >Añadir Preferencia</button>
+                    <button *ngIf="rgorra" (click)="RemoverIntereses('gorra')" class="btn " >Remover Preferencia</button>
                     <!-- <a href="#" class="btn">Añadir Preferencia</a> -->
                 </div>
 
@@ -200,7 +204,7 @@
                 <div class="products_text">
                     <h2>Bandas Inteligentes</h2>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Buscas tecnologia de banguardia..
                     </p>
                     <!-- <h3>$150.99</h3> -->
                     <div class="products_star">
@@ -211,6 +215,7 @@
                         <i class="fa-solid fa-star"></i>
                     </div>
                     <button *ngIf="banda" (click)="listarIntereses('Usuario','banda')" class="btn " >Añadir Preferencia</button>
+                    <button *ngIf="rbanda" (click)="RemoverIntereses('banda')" class="btn " >Remover Preferencia</button>
                     <!-- <a href="#" class="btn">Añadir Preferencia</a> -->
                 </div>
 
@@ -230,7 +235,7 @@
                 <div class="products_text">
                     <h2>Balones de Futbool</h2>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Los balones de futbol son lo tuyo!
                     </p>
                     
                     <div class="products_star">
@@ -241,6 +246,7 @@
                         <i class="fa-regular fa-star-half-stroke"></i>
                     </div>
                     <button *ngIf="balon" (click)="listarIntereses('Usuario','balon')" class="btn " >Añadir Preferencia</button>
+                    <button *ngIf="rbalon" (click)="RemoverIntereses('balon')" class="btn " >Remover Preferencia</button>
                     <!-- <a href="#" class="btn">Añadir Preferencia</a> -->
                 </div>
 
@@ -260,7 +266,7 @@
                 <div class="products_text">
                     <h2>Audifonos</h2>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Nada como Audifonos de calidad para escoger
                     </p>
                     <!-- <h3>$110.99</h3> -->
                     <div class="products_star">
@@ -271,6 +277,7 @@
                         <i class="fa-regular fa-star"></i>
                     </div>
                     <button *ngIf="audifonos" (click)="listarIntereses('Usuario','audifonos')" class="btn " >Añadir Preferencia</button>
+                    <button *ngIf="raudifonos" (click)="RemoverIntereses('audifonos')" class="btn " >Remover Preferencia</button>
                     <!-- <a href="#" class="btn">Añadir Preferencia</a> -->
                 </div>
 
@@ -290,7 +297,7 @@
                 <div class="products_text">
                     <h2>Pachones</h2>
                     <p>
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                        Mereces el pachon perfecto para tus gustos 
                     </p>
                    <!--  <h3>$150.99</h3> -->
                     <div class="products_star">
@@ -301,12 +308,14 @@
                         <i class="fa-regular fa-star-half-stroke"></i>
                     </div>
                     <button *ngIf="pachon" (click)="listarIntereses('Usuario','pachon')" class="btn " >Añadir Preferencia</button>
+                    <button *ngIf="rpachon" (click)="RemoverIntereses('pachon')" class="btn " >Remover Preferencia</button>
                     <!-- <a href="#" class="btn">Añadir Preferencia</a> -->
                 </div>
 
             </div>
-
+            
         </div>
+        
     </div>
 
 
@@ -375,9 +384,10 @@
         <button (click)="guardarPreferencias()" class="btn " >Guardar preferencias</button>
     </div-->
 
-    <div class="card" style="margin-top: 150px; width: 150px; align-items: center;">
+    <div class="services">
           <div class="products_text">
-              <button (click)="guardarPreferencias()" class="btn ">Guardar preferencias</button>
+            
+              <button class="btn " (click)="guardarPreferencias()" >Guardar preferencias</button>
           </div>
       </div>
 

@@ -40,3 +40,47 @@ insert into wannachat.palabras_claves (palabra, categoria) values ('quiero', 3);
 insert into wannachat.palabras_claves (palabra, categoria) values ('ver', 3);
 insert into wannachat.palabras_claves (palabra, categoria) values ('recomendacion', 3);
 insert into wannachat.palabras_claves (palabra, categoria) values ('recomiendes', 3);
+
+
+usuario:raymundoelio@gmail.com
+pass:raymundoelio
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
