@@ -7,7 +7,6 @@ import {
   CreateModerationRequest,
   CreateChatCompletionRequest,
   ChatCompletionRequestMessageRoleEnum,
-  UserRequestMessage,
 } from 'openai';
 import { getTokens } from './lib/tokenizer';
 import { UserRepository } from './repositories/user-repository';
