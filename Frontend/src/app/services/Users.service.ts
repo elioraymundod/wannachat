@@ -22,4 +22,8 @@ export class UsersServiceService {
     public getUserById(usuario: any): Observable<any> {
         return this.http.get<any>(`${this.baseUrlDB}/get/usuarios/${usuario}`)
     }
+
+    public getPreferenciasByUsuario(usuario: any): Observable<any> {
+        return this.http.get<any>(`${this.baseUrlDB}/get/preferencias/${usuario}`)
+    }
 }

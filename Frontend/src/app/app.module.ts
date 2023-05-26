@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatGridListModule} from '@angular/material/grid-list';
-import {MatCardModule} from '@angular/material/card';
+import {MatCardModule, MatCardTitle} from '@angular/material/card';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +21,8 @@ import { UsersServiceService } from './services/Users.service';
 import { InteresesService } from './services/Intereses.service';
 import { PrincipalWannaComponent } from './components/principal-wanna/principal-wanna.component';
 import {MatButtonModule} from '@angular/material/button';
+import { MaterialExampleModule } from './material.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,8 @@ import {MatButtonModule} from '@angular/material/button';
     HttpClientModule,
     MatGridListModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MaterialExampleModule
   ],
   providers: [ChatGptServiceService, UsersServiceService, InteresesService],
   bootstrap: [AppComponent]
