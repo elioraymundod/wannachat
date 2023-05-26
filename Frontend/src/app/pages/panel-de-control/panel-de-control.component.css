@@ -137,6 +137,9 @@ img{
     object-fit: cover;
 }
 
+.classeightitems{
+  color: white;
+}
 #item-2:checked ~ .cards #selector-1,
 #item-3:checked ~ .cards #selector-2,
 #item-4:checked ~ .cards #selector-3,
@@ -295,4 +298,389 @@ img{
 .backgroundIcons {
     background-color: #D1E8CF;
     height: 50%;
+}
+
+
+
+
+
+
+
+
+
+
+.classsevenitems{
+  color: white;
+}
+#item-seven-2:checked ~ .cards #selector-seven-1,
+#item-seven-3:checked ~ .cards #selector-seven-2,
+#item-seven-4:checked ~ .cards #selector-seven-3,
+#item-seven-5:checked ~ .cards #selector-seven-4,
+#item-seven-6:checked ~ .cards #selector-seven-5,
+#item-seven-7:checked ~ .cards #selector-seven-6,
+#item-seven-1:checked ~ .cards #selector-seven-7{
+    transform: translateX(-100%) scale(0.5);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+#item-seven-3:checked ~ .cards #selector-seven-1,
+#item-seven-4:checked ~ .cards #selector-seven-2,
+#item-seven-5:checked ~ .cards #selector-seven-3,
+#item-seven-6:checked ~ .cards #selector-seven-4,
+#item-seven-7:checked ~ .cards #selector-seven-5,
+#item-seven-1:checked ~ .cards #selector-seven-6,
+#item-seven-2:checked ~ .cards #selector-seven-7{
+    transform: translateX(-60%) scale(0.3);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+#item-seven-4:checked ~ .cards #selector-seven-1,
+#item-seven-5:checked ~ .cards #selector-seven-2,
+#item-seven-6:checked ~ .cards #selector-seven-3,
+#item-seven-7:checked ~ .cards #selector-seven-4,
+#item-seven-1:checked ~ .cards #selector-seven-5,
+#item-seven-2:checked ~ .cards #selector-seven-6,
+#item-seven-3:checked ~ .cards #selector-seven-7{
+    transform: translateX(-30) scale(0.1);
+    opacity: 0.1;
+    z-index: 0;
+}
+
+#item-seven-5:checked ~ .cards #selector-seven-1,
+#item-seven-6:checked ~ .cards #selector-seven-2,
+#item-seven-7:checked ~ .cards #selector-seven-3,
+#item-seven-1:checked ~ .cards #selector-seven-4,
+#item-seven-2:checked ~ .cards #selector-seven-5,
+#item-seven-3:checked ~ .cards #selector-seven-6,
+#item-seven-4:checked ~ .cards #selector-seven-7{
+    transform: translateX(30%) scale(0.3);
+    opacity: 0.1;
+    z-index: 0;
+}
+
+#item-seven-6:checked ~ .cards #selector-seven-1,
+#item-seven-7:checked ~ .cards #selector-seven-2,
+#item-seven-1:checked ~ .cards #selector-seven-3,
+#item-seven-2:checked ~ .cards #selector-seven-4,
+#item-seven-3:checked ~ .cards #selector-seven-5,
+#item-seven-4:checked ~ .cards #selector-seven-6,
+#item-seven-5:checked ~ .cards #selector-seven-7{
+    transform: translateX(60%) scale(0.5);
+    opacity: 0.3;
+    z-index: 0;
+}
+
+#item-seven-7:checked ~ .cards #selector-seven-1,
+#item-seven-1:checked ~ .cards #selector-seven-2,
+#item-seven-2:checked ~ .cards #selector-seven-3,
+#item-seven-3:checked ~ .cards #selector-seven-4,
+#item-seven-4:checked ~ .cards #selector-seven-5,
+#item-seven-5:checked ~ .cards #selector-seven-6,
+#item-seven-6:checked ~ .cards #selector-seven-7{
+    transform: translateX(100%) scale(0.7);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+#item-seven-1:checked ~ .cards #selector-seven-1,
+#item-seven-2:checked ~ .cards #selector-seven-2,
+#item-seven-3:checked ~ .cards #selector-seven-3,
+#item-seven-4:checked ~ .cards #selector-seven-4,
+#item-seven-5:checked ~ .cards #selector-seven-5,
+#item-seven-6:checked ~ .cards #selector-seven-6,
+#item-seven-7:checked ~ .cards #selector-seven-7{
+    transform: translateX(0) scale(1);
+    z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.classsixitems{
+  color: white;
+}
+#item-six-2:checked ~ .cards #selector-six-1,
+#item-six-3:checked ~ .cards #selector-six-2,
+#item-six-4:checked ~ .cards #selector-six-3,
+#item-six-5:checked ~ .cards #selector-six-4,
+#item-six-6:checked ~ .cards #selector-six-5,
+#item-six-1:checked ~ .cards #selector-six-6{
+    transform: translateX(-100%) scale(0.3);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+#item-six-3:checked ~ .cards #selector-six-1,
+#item-six-4:checked ~ .cards #selector-six-2,
+#item-six-5:checked ~ .cards #selector-six-3,
+#item-six-6:checked ~ .cards #selector-six-4,
+#item-six-1:checked ~ .cards #selector-six-5,
+#item-six-2:checked ~ .cards #selector-six-6{
+    transform: translateX(-50) scale(0.1);
+    opacity: 0.3;
+    z-index: 0;
+}
+
+#item-six-4:checked ~ .cards #selector-six-1,
+#item-six-5:checked ~ .cards #selector-six-2,
+#item-six-6:checked ~ .cards #selector-six-3,
+#item-six-1:checked ~ .cards #selector-six-4,
+#item-six-2:checked ~ .cards #selector-six-5,
+#item-six-3:checked ~ .cards #selector-six-6{
+    transform: translateX(0%) scale(0.3);
+    opacity: 0.1;
+    z-index: 0;
+}
+
+#item-six-5:checked ~ .cards #selector-six-1,
+#item-six-6:checked ~ .cards #selector-six-2,
+#item-six-1:checked ~ .cards #selector-six-3,
+#item-six-2:checked ~ .cards #selector-six-4,
+#item-six-3:checked ~ .cards #selector-six-5,
+#item-six-4:checked ~ .cards #selector-six-6{
+    transform: translateX(50%) scale(0.5);
+    opacity: 0.3;
+    z-index: 0;
+}
+
+#item-six-6:checked ~ .cards #selector-six-1,
+#item-six-1:checked ~ .cards #selector-six-2,
+#item-six-2:checked ~ .cards #selector-six-3,
+#item-six-3:checked ~ .cards #selector-six-4,
+#item-six-4:checked ~ .cards #selector-six-5,
+#item-six-5:checked ~ .cards #selector-six-6{
+    transform: translateX(100%) scale(0.7);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+#item-six-1:checked ~ .cards #selector-six-1,
+#item-six-2:checked ~ .cards #selector-six-2,
+#item-six-3:checked ~ .cards #selector-six-3,
+#item-six-4:checked ~ .cards #selector-six-4,
+#item-six-5:checked ~ .cards #selector-six-5,
+#item-six-6:checked ~ .cards #selector-six-6{
+    transform: translateX(0) scale(1);
+    z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.classfiveitems{
+  color: white;
+}
+#item-five-2:checked ~ .cards #selector-five-1,
+#item-five-3:checked ~ .cards #selector-five-2,
+#item-five-4:checked ~ .cards #selector-five-3,
+#item-five-5:checked ~ .cards #selector-five-4,
+#item-five-1:checked ~ .cards #selector-five-5{
+    transform: translateX(-100) scale(0.1);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+#item-five-3:checked ~ .cards #selector-five-1,
+#item-five-4:checked ~ .cards #selector-five-2,
+#item-five-5:checked ~ .cards #selector-five-3,
+#item-five-1:checked ~ .cards #selector-five-4,
+#item-five-2:checked ~ .cards #selector-five-5{
+    transform: translateX(-60%) scale(0.3);
+    opacity: 0.2;
+    z-index: 0;
+}
+
+#item-five-4:checked ~ .cards #selector-five-1,
+#item-five-5:checked ~ .cards #selector-five-2,
+#item-five-1:checked ~ .cards #selector-five-3,
+#item-five-2:checked ~ .cards #selector-five-4,
+#item-five-3:checked ~ .cards #selector-five-5{
+    transform: translateX(60%) scale(0.5);
+    opacity: 0.2;
+    z-index: 0;
+}
+
+#item-five-5:checked ~ .cards #selector-five-1,
+#item-five-1:checked ~ .cards #selector-five-2,
+#item-five-2:checked ~ .cards #selector-five-3,
+#item-five-3:checked ~ .cards #selector-five-4,
+#item-five-4:checked ~ .cards #selector-five-5{
+    transform: translateX(100%) scale(0.7);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+#item-five-1:checked ~ .cards #selector-five-1,
+#item-five-2:checked ~ .cards #selector-five-2,
+#item-five-3:checked ~ .cards #selector-five-3,
+#item-five-4:checked ~ .cards #selector-five-4,
+#item-five-5:checked ~ .cards #selector-five-5{
+    transform: translateX(0) scale(1);
+    z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.classfouritems{
+  color: white;
+}
+#item-four-2:checked ~ .cards #selector-four-1,
+#item-four-3:checked ~ .cards #selector-four-2,
+#item-four-4:checked ~ .cards #selector-four-3,
+#item-four-1:checked ~ .cards #selector-four-4{
+    transform: translateX(-80%) scale(0.3);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+#item-four-3:checked ~ .cards #selector-four-1,
+#item-four-4:checked ~ .cards #selector-four-2,
+#item-four-1:checked ~ .cards #selector-four-3,
+#item-four-2:checked ~ .cards #selector-four-4{
+    transform: translateX(0%) scale(0.5);
+    opacity: 0.2;
+    z-index: 0;
+}
+
+#item-four-4:checked ~ .cards #selector-four-1,
+#item-four-1:checked ~ .cards #selector-four-2,
+#item-four-2:checked ~ .cards #selector-four-3,
+#item-four-3:checked ~ .cards #selector-four-4{
+    transform: translateX(80%) scale(0.7);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+#item-four-1:checked ~ .cards #selector-four-1,
+#item-four-2:checked ~ .cards #selector-four-2,
+#item-four-3:checked ~ .cards #selector-four-3,
+#item-four-4:checked ~ .cards #selector-four-4{
+    transform: translateX(0) scale(1);
+    z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.classthreeitems{
+  color: white;
+}
+#item-three-2:checked ~ .cards #selector-three-1,
+#item-three-3:checked ~ .cards #selector-three-2,
+#item-three-1:checked ~ .cards #selector-three-3{
+    transform: translateX(-100%) scale(0.5);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+#item-three-3:checked ~ .cards #selector-three-1,
+#item-three-1:checked ~ .cards #selector-three-2,
+#item-three-2:checked ~ .cards #selector-three-3{
+    transform: translateX(100%) scale(0.7);
+    opacity: 0.6;
+    z-index: 0;
+}
+
+#item-three-1:checked ~ .cards #selector-three-1,
+#item-three-2:checked ~ .cards #selector-three-2,
+#item-three-3:checked ~ .cards #selector-three-3{
+    transform: translateX(0) scale(1);
+    z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.classtwoitems{
+  color: white;
+}
+#item-two-2:checked ~ .cards #selector-two-1,
+#item-two-1:checked ~ .cards #selector-two-2{
+    transform: translateX(50%) scale(0.7);
+    opacity: 0.5;
+    z-index: 0;
+}
+
+#item-two-1:checked ~ .cards #selector-two-1,
+#item-two-2:checked ~ .cards #selector-two-2{
+    transform: translateX(-50) scale(1);
+    z-index: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.classoneitems{
+  color: white;
+}
+#item-one-1:checked ~ .cards #selector-one-1{
+    transform: translateX(0) scale(1);
+    z-index: 1;
 }

@@ -16,6 +16,7 @@ export class PanelDeControlComponent implements OnInit {
   listaDesordenada: any;
   sorteo: any;
   userLogged: any;
+  totalPreferencias: any = [];
 
   constructor(private database: DataBaseService, private usersService: UsersServiceService,
     private authService: AuthService) {
@@ -25,7 +26,7 @@ export class PanelDeControlComponent implements OnInit {
 
         //Obtener lista de preferencias
         this.usersService.getPreferenciasByUsuario(this.userLogged).subscribe(preferencias => {
-          console.log('las preferencias son ', JSON.parse(preferencias[0].preferencias))
+          this.totalPreferencias = JSON.parse(preferencias[0].preferencias);
         })
       })
     })
