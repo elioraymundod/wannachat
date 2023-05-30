@@ -106,8 +106,8 @@ export class WebAiService {
         // throw new Error('palabra inapropiada');
         return 'palabra inapropiada';
       }
-      const prompt = `Eres asistente IA personalizado para ayudar a comprar zapatos. Tu nombre es ${NAME_BOT}:
-    `;
+      const prompt = `Eres asistente IA personalizado para ayudar a comprar Balones, Bandas inteligentes, Gorras, pachones, tennis, playeras, sudaderas y audifonos. Tu nombre es ${NAME_BOT}.
+                      Debes recomendar paginas para comprar y algunos productos cuando te lo pidan. Cuando recomiendes una pagina debes incluir su sitio web. Tus respuestas deben ser cortas.`;
       tokenCount += getTokens(prompt);
 
       if (tokenCount >= 4000) {
@@ -193,4 +193,99 @@ export class WebAiService {
   ) {
     return await this.userRepository.getUser(user);
   }
+
+
+
+  /**
+   * @description It takes a role and a content, and returns a response
+   * @param {ChatCompletionRequestMessageRoleEnum} role - *system/user/assistant*
+   * @param {string} content - The text of the message.
+   * @returns The return is a string with the response of the bot.
+   */
+  async getModelAnswerChatGpt(
+    role: ChatCompletionRequestMessageRoleEnum,
+    content: string,
+    preferences: any
+  ) {
+    try {
+      const reqMessages: ChatCompletionRequestMessage[] = [{ role, content }];
+      if (!reqMessages) {
+        throw new Error('no messages provided');
+      }
+      let tokenCount = 0;
+      reqMessages.forEach((msg) => {
+        const tokens = getTokens(msg.content);
+        tokenCount += tokens;
+      });
+      const paramsModeration: CreateModerationRequest = {
+        input: reqMessages[reqMessages.length - 1].content,
+      };
+      const moderationRes = await this.openai.createModeration(
+        paramsModeration,
+      );
+      const moderationData = moderationRes.data;
+      const [results] = moderationData.results;
+      //console.log('results', results);
+      if (results.flagged) {
+        // throw new Error('palabra inapropiada');
+        return 'palabra inapropiada';
+      }
+      const prompt = `Eres asistente IA personalizado para ayudar a comprar ${preferences}.
+                      Debes recomendar paginas para comprar y algunos productos cuando te lo pidan. 
+                      Cuando recomiendes una pagina debes incluir su sitio web. Tus respuestas deben ser cortas.`;
+      tokenCount += getTokens(prompt);
+
+      if (tokenCount >= 4000) {
+        throw new Error('Query too large');
+      }
+      const messages: ChatCompletionRequestMessage[] = [
+        { role: 'system', content: prompt },
+        ...reqMessages,
+      ];
+      //console.log('messages', messages);
+      const paramsCompletation: CreateChatCompletionRequest = {
+        model: MODEL_ID_TURBO,
+        messages,
+        temperature: DEFAULT_TEMPERATURE,
+      };
+      const newConfiguration = new Configuration({
+        organization: process.env.ORGANIZATION_ID,
+        apiKey: this.OPENAI_KEY,
+        basePath: API_CHAT,
+      });
+      const openConection = new OpenAIApi(newConfiguration);
+      const response = await openConection.createCompletion(paramsCompletation);
+      const { data } = response;
+      //console.log('response chat-gpt: ', data);
+      if (data.choices.length) {
+        //console.log('response chat-gpt: ', data.choices);
+        return data.choices;
+      }
+      return data;
+    } catch (error) {
+      //console.error('******* ERROR *****', error);
+      // console.error('******* ERROR MESSAGE *********', error.message);
+      // console.error('******* ERROR NAME *********', error.name);
+      // console.error('******* ERROR STATUS *****', error.response.status);
+      // console.error(
+      //   '******* ERROR STATUS TEXT *****',
+      //   error.response.statusText,
+      // );
+      // console.error(
+      //   '******* ERROR DATA MESSAGE *****',
+      //   error.response.data.error.message,
+      // );
+      //const name = error.name ?? 'Error Desconocido';
+      const messages = error.message ?? 'Internal server error';
+      const status = error.response.status ?? 500;
+      const description =
+        error.response.data.error.message ??
+        'No se pudo recuperar error message';
+      //return error;
+      throw new HttpException(messages, status, {
+        description,
+      });
+    }
+  }
+
 }

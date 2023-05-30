@@ -163,7 +163,7 @@ img{
 #item-1:checked ~ .cards #selector-7,
 #item-2:checked ~ .cards #selector-8{
     transform: translateX(-70%) scale(0.5);
-    opacity: 0.1;
+    opacity: 0.5;
     z-index: 0;
 }
 
@@ -176,7 +176,7 @@ img{
 #item-2:checked ~ .cards #selector-7,
 #item-3:checked ~ .cards #selector-8{
     transform: translateX(-35%) scale(0.3);
-    opacity: 0.5;
+    opacity: 0.3;
     z-index: 0;
 }
 
@@ -319,7 +319,7 @@ img{
 #item-seven-6:checked ~ .cards #selector-seven-5,
 #item-seven-7:checked ~ .cards #selector-seven-6,
 #item-seven-1:checked ~ .cards #selector-seven-7{
-    transform: translateX(-100%) scale(0.5);
+    transform: translateX(-100%) scale(0.7);
     opacity: 0.6;
     z-index: 0;
 }
@@ -331,7 +331,7 @@ img{
 #item-seven-7:checked ~ .cards #selector-seven-5,
 #item-seven-1:checked ~ .cards #selector-seven-6,
 #item-seven-2:checked ~ .cards #selector-seven-7{
-    transform: translateX(-60%) scale(0.3);
+    transform: translateX(-60%) scale(0.5);
     opacity: 0.6;
     z-index: 0;
 }
@@ -343,7 +343,7 @@ img{
 #item-seven-1:checked ~ .cards #selector-seven-5,
 #item-seven-2:checked ~ .cards #selector-seven-6,
 #item-seven-3:checked ~ .cards #selector-seven-7{
-    transform: translateX(-30) scale(0.1);
+    transform: translateX(-30%) scale(0.3);
     opacity: 0.1;
     z-index: 0;
 }
@@ -420,7 +420,7 @@ img{
 #item-six-5:checked ~ .cards #selector-six-4,
 #item-six-6:checked ~ .cards #selector-six-5,
 #item-six-1:checked ~ .cards #selector-six-6{
-    transform: translateX(-100%) scale(0.3);
+    transform: translateX(-100%) scale(0.7);
     opacity: 0.6;
     z-index: 0;
 }
@@ -431,7 +431,7 @@ img{
 #item-six-6:checked ~ .cards #selector-six-4,
 #item-six-1:checked ~ .cards #selector-six-5,
 #item-six-2:checked ~ .cards #selector-six-6{
-    transform: translateX(-50) scale(0.1);
+    transform: translateX(-50%) scale(0.5);
     opacity: 0.3;
     z-index: 0;
 }
@@ -490,15 +490,13 @@ img{
 
 
 
-.classfiveitems{
-  color: white;
-}
+
 #item-five-2:checked ~ .cards #selector-five-1,
 #item-five-3:checked ~ .cards #selector-five-2,
 #item-five-4:checked ~ .cards #selector-five-3,
 #item-five-5:checked ~ .cards #selector-five-4,
 #item-five-1:checked ~ .cards #selector-five-5{
-    transform: translateX(-100) scale(0.1);
+    transform: translateX(-100%) scale(0.6);
     opacity: 0.6;
     z-index: 0;
 }
@@ -518,7 +516,7 @@ img{
 #item-five-1:checked ~ .cards #selector-five-3,
 #item-five-2:checked ~ .cards #selector-five-4,
 #item-five-3:checked ~ .cards #selector-five-5{
-    transform: translateX(60%) scale(0.5);
+    transform: translateX(60%) scale(0.3);
     opacity: 0.2;
     z-index: 0;
 }
@@ -528,7 +526,7 @@ img{
 #item-five-2:checked ~ .cards #selector-five-3,
 #item-five-3:checked ~ .cards #selector-five-4,
 #item-five-4:checked ~ .cards #selector-five-5{
-    transform: translateX(100%) scale(0.7);
+    transform: translateX(100%) scale(0.6);
     opacity: 0.6;
     z-index: 0;
 }
@@ -561,7 +559,7 @@ img{
 #item-four-3:checked ~ .cards #selector-four-2,
 #item-four-4:checked ~ .cards #selector-four-3,
 #item-four-1:checked ~ .cards #selector-four-4{
-    transform: translateX(-80%) scale(0.3);
+    transform: translateX(-80%) scale(0.6);
     opacity: 0.6;
     z-index: 0;
 }
@@ -570,7 +568,7 @@ img{
 #item-four-4:checked ~ .cards #selector-four-2,
 #item-four-1:checked ~ .cards #selector-four-3,
 #item-four-2:checked ~ .cards #selector-four-4{
-    transform: translateX(0%) scale(0.5);
+    transform: translateX(0%) scale(0.4);
     opacity: 0.2;
     z-index: 0;
 }
@@ -579,7 +577,7 @@ img{
 #item-four-1:checked ~ .cards #selector-four-2,
 #item-four-2:checked ~ .cards #selector-four-3,
 #item-four-3:checked ~ .cards #selector-four-4{
-    transform: translateX(80%) scale(0.7);
+    transform: translateX(80%) scale(0.6);
     opacity: 0.6;
     z-index: 0;
 }
@@ -620,7 +618,7 @@ img{
 #item-three-3:checked ~ .cards #selector-three-1,
 #item-three-1:checked ~ .cards #selector-three-2,
 #item-three-2:checked ~ .cards #selector-three-3{
-    transform: translateX(100%) scale(0.7);
+    transform: translateX(100%) scale(0.5);
     opacity: 0.6;
     z-index: 0;
 }
@@ -652,7 +650,7 @@ img{
 }
 #item-two-2:checked ~ .cards #selector-two-1,
 #item-two-1:checked ~ .cards #selector-two-2{
-    transform: translateX(50%) scale(0.7);
+    transform: translateX(50%) scale(0.5);
     opacity: 0.5;
     z-index: 0;
 }

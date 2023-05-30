@@ -45,31 +45,31 @@ export class CatalogoInteresesComponent implements OnInit {
           this.zapato = true;
           this.rzapato=false;
         }
-        else if(rzapato[0].interes=="playera"){
+        else if(rzapato[0].interes=="Playeras"){
           this.playera = true;
           this.rplayera=false;
         }
-        else if(rzapato[0].interes=="sudadera"){
+        else if(rzapato[0].interes=="Sudaderas"){
           this.sudadera = true;
           this.rsudadera=false;
         }
-        else if(rzapato[0].interes=="gorra"){
+        else if(rzapato[0].interes=="Gorras"){
           this.gorra = true;
           this.rgorra=false;
         }
-        else if(rzapato[0].interes=="banda"){
+        else if(rzapato[0].interes=="Bandas"){
           this.banda = true;
           this.rbanda=false;
         }
-        else if(rzapato[0].interes=="balon"){
+        else if(rzapato[0].interes=="Balones"){
           this.balon = true;
           this.rbalon=false;
         }
-        else if(rzapato[0].interes=="audifonos"){
+        else if(rzapato[0].interes=="Audifonos"){
           this.audifonos = true;
           this.raudifonos=false;
         }
-        else if(rzapato[0].interes=="pachon"){
+        else if(rzapato[0].interes=="Pachones"){
           this.pachon = true;
           this.rpachon=false;
         }
@@ -86,35 +86,35 @@ export class CatalogoInteresesComponent implements OnInit {
     }
     this.listaIntereses.push(interesesTemp);
     for (let i = 0; i < this.listaIntereses.length; i++) {
-      if (this.listaIntereses[i].interes == 'Zapato') {
+      if (this.listaIntereses[i].interes == 'Tennis') {
         this.zapato = false;
         this.rzapato=true;
       }
-      if (this.listaIntereses[i].interes == 'playera') {
+      if (this.listaIntereses[i].interes == 'Playeras') {
         this.playera = false;
         this.rplayera=true;
       }
-      if (this.listaIntereses[i].interes == 'sudadera') {
+      if (this.listaIntereses[i].interes == 'Sudaderas') {
         this.sudadera = false;
         this.rsudadera=true;
       }
-      if (this.listaIntereses[i].interes == 'gorra') {
+      if (this.listaIntereses[i].interes == 'Gorras') {
         this.gorra = false;
         this.rgorra=true;
       }
-      if (this.listaIntereses[i].interes == 'banda') {
+      if (this.listaIntereses[i].interes == 'Bandas') {
         this.banda = false;
         this.rbanda=true;
       }
-      if (this.listaIntereses[i].interes == 'balon') {
+      if (this.listaIntereses[i].interes == 'Balones') {
         this.balon = false;
         this.rbalon=true;
       }
-      if (this.listaIntereses[i].interes == 'audifonos') {
+      if (this.listaIntereses[i].interes == 'Audifonos') {
         this.audifonos = false;
         this.raudifonos=true;
       }
-      if (this.listaIntereses[i].interes == 'pachon') {
+      if (this.listaIntereses[i].interes == 'Pachones') {
         this.pachon = false;
         this.rpachon=true;
       }

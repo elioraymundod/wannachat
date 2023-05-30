@@ -11,4 +11,13 @@ module.exports={
         });
     },
 
+    getPreferencias(usuario){
+        return new Promise((resolve,reject)=>{
+            con.query('select * from wannachat.preferencias_usuario where usuario = ? order by preferencia_id desc limit 1;', [usuario], (err,rows)=>{
+                if(err) reject(err);
+                else resolve(rows);
+            })
+        })
+    }
+
 }

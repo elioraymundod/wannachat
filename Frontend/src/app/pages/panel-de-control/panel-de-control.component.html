@@ -8,18 +8,31 @@
 
 
     <div class="container__slider">
-
+        <h1 style="margin-top: 15%;">hola</h1>
         <div class="container">
-            <input type="radio" name="slider" id="item-1" checked>
+            
+
+            <input *ngFor="let i of this.preferenciasPersonalizadas" type="radio" name="slider" id="{{i.item}}">
+
+            <div class="cards">
+                <label *ngFor="let item of this.preferenciasPersonalizadas" class="card" for="{{item.item}}" id="{{item.selector}}">
+                    <img src="../../../assets/images/{{item.nombrePreferencia}}.png">
+                    <div class="row d-flex justify-content-center mt-4">
+                        <h2><b>{{item.nombrePreferencia}}</b></h2>
+                    </div>
+                </label>
+            </div>
+
+            <!--input type="radio" name="slider" id="item-1" checked>
             <input type="radio" name="slider" id="item-2">
             <input type="radio" name="slider" id="item-3">
             <input type="radio" name="slider" id="item-4">
             <input type="radio" name="slider" id="item-5">
             <input type="radio" name="slider" id="item-6">
             <input type="radio" name="slider" id="item-7">
-            <input type="radio" name="slider" id="item-8">
+            <input type="radio" name="slider" id="item-8"-->
 
-            <!--Cuando el usuario tenga 8 preferencias-->
+            <!--Cuando el usuario tenga 8 preferencias>
             <div class="cards" *ngIf="this.totalPreferencias.length === 8">
                 <label *ngFor="let item of this.totalPreferencias" class="card" for="{{item.for}}" id="{{item.selector}}">
                     <img src="../../../assets/images/{{item.imagen}}.png">

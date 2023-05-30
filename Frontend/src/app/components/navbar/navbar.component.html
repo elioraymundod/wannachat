@@ -6,7 +6,6 @@
         
     </a>
 
-
     <div ngbDropdown class="d-inline-block" *ngIf="userLogged|async as user; else LoginButton">
         <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
             <img style="border-radius: 100%;" *ngIf="user.photoURL" src="{{user.photoURL}}" width="30" height="30"
@@ -15,6 +14,9 @@
         </button>
         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
             <button ngbDropdownItem routerLink="/login" (click)="logOut()">Salir</button>
+        </div>
+        <div ngbDropdownMenu aria-labelledby="dropdownBasic1" style="margin-top: 20%;">
+            <button ngbDropdownItem routerLink="/intereses">Cambiar preferencias</button>
         </div>
     </div>
 

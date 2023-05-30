@@ -18,4 +18,19 @@ router.post('/preferencias', (req, res) => {
 });
 
 
+router.get('/get/preferencias/:user', (req, res) => {
+    preferencias.getPreferencias(req.params.user)
+        .then(preferencias => {
+            res.status(200).send(preferencias);
+        })
+        .catch(err => {
+            console.error(err);
+            res.status(404).send({
+                mesage: 'Error al obtener datos'
+            });
+        });
+
+});
+
+
 module.exports = router;
