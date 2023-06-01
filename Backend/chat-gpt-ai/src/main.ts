@@ -8,10 +8,13 @@ import {
 import { ErrorsInterceptor } from './web-ai/interceptors/errors/errors.interceptor';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
+import { TypeORMExceptionFilter } from './web-ai/exception-filters/typeorm.filter';
+import { HttpExceptionFilter } from './web-ai/exception-filters/HttpExceptionFilter';
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   app.enableCors();
+  app.useGlobalFilters(new TypeORMExceptionFilter(), new HttpExceptionFilter());
   app.useGlobalInterceptors(new ErrorsInterceptor());
   const config = new DocumentBuilder()
     .setTitle('WannaBot')

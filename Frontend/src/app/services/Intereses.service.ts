@@ -2,19 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-
+const wannaUrl = environment.baseUrlChatGpt + '/web-ai';
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class InteresesService {
-    baseUrlDB: string;
+  baseUrlDB: string = wannaUrl;
 
+  constructor(private http: HttpClient) {}
 
-    constructor(private http: HttpClient) {
-        this.baseUrlDB = environment.baseUrlDB;
-    }
-
-    public insertPreferencias(preferencias: any): Observable<any> {
-        return this.http.post(`${this.baseUrlDB}/preferencias`, preferencias)
-    }
+  public insertPreferencias(preferencias: any): Observable<any> {
+    return this.http.post(`${this.baseUrlDB}/crear-preferencia`, preferencias);
+  }
 }

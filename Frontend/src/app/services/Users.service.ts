@@ -2,28 +2,25 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-
+const wannaUrl = environment.baseUrlChatGpt + '/web-ai';
 @Injectable({
-    providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersServiceService {
-    baseUrlDB: string;
+  baseUrlDB: string = wannaUrl;
 
+  constructor(private http: HttpClient) {}
 
-    constructor(private http: HttpClient) {
-        this.baseUrlDB = environment.baseUrlDB;
-    }
+  public insertUser(usuario: any): Observable<any> {
+    //console.log('creando', usuario);
+    return this.http.post(`${this.baseUrlDB}/crear-usuario`, usuario);
+  }
 
-    public insertUser(usuario: any): Observable<any> {
-        console.log('creando', usuario)
-        return this.http.post(`${this.baseUrlDB}/usuarios`, usuario)
-    }
+  public getUserById(usuario: any): Observable<any> {
+    return this.http.get<any>(`${this.baseUrlDB}/obtener-usuario/${usuario}`);
+  }
 
-    public getUserById(usuario: any): Observable<any> {
-        return this.http.get<any>(`${this.baseUrlDB}/get/usuarios/${usuario}`)
-    }
-
-    public getPreferenciasByUsuario(usuario: any): Observable<any> {
-        return this.http.get<any>(`${this.baseUrlDB}/get/preferencias/${usuario}`)
-    }
+  public getPreferenciasByUsuario(usuario: any): Observable<any> {
+    return this.http.get<any>(`${this.baseUrlDB}/obtener-preferencias/${usuario}`);
+  }
 }

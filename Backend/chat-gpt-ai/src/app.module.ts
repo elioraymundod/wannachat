@@ -6,24 +6,23 @@ import { ConfigModule } from '@nestjs/config';
 import { APP_FILTER } from '@nestjs/core';
 import { HttpExceptionFilter } from './web-ai/exception-filters/HttpExceptionFilter';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './web-ai/models/user-model';
+import { User } from './web-ai/models/user.entity';
+import { Preferencias } from './web-ai/models/preferencias.entity';
 
 @Module({
   imports: [
-    WebAiModule, ConfigModule.forRoot(),
+    WebAiModule,
+    ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
-      port: 3306,
-      username: 'root',
-      password: '',
-      database: 'wannachat',
-      entities: [
-        User
-      ],
-      synchronize: true,
+      host: process.env.DB_HOST,
+      port: parseInt(process.env.DB_PORT),
+      username: process.env.DB_USER,
+      password: process.env.DB_PASS,
+      database: process.env.DB_NAME,
+      entities: [User, Preferencias],
     }),
-    WebAiModule
+    WebAiModule,
   ],
   controllers: [AppController],
   providers: [

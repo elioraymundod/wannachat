@@ -1,78 +1,34 @@
-<!-- <div class="container">
-  <div class="card text-center">
-    <div class="card-header">
-      <b> REGISTRO</b>
+<div class="body">
+  <div class="cod-container">
+    <div class="form-header">
+      <img src="./assets/images/LOGO CHATBOT 3.ico" width="100">
+      <h1>E comerce<span>Wanna</span></h1>
     </div>
-    <div class="card-body p-4">
-      <label style="float: left;">Nombre</label>
-      <input class="form-control m-2" type="email" placeholder="ingrese su nombre" [(ngModel)]="usuario.name">
-
-      <label style="float: left;">Email</label>
-      <input class="form-control m-2" type="email" placeholder="ingrese su email" [(ngModel)]="usuario.email">
-
-      <label style="float: left;">Password</label>
-      <input class="form-control m-2" type="password" placeholder="ingrese su password" [(ngModel)]="usuario.password">
-
-      <button class="btn btn-primary btn-block m-2" (click)="registrarse()">Registrar</button>
-      <!-- <button class="btn btn-info btn-block m-2" (click)="IngresarConGoogle()">Ingresar con google</button> 
-      <label>Ya tenes cuenta? <a routerLink="/login">Ingresar</a></label>
+    <div class="form-content">
+      <form [formGroup]="formGroup" class="cod-form">
+        <div class="form-title">
+          <h3>Regístrate Gratis</h3>
+        </div>
+        <div class="input-group">
+          <input type="text" class="form-input" placeholder="Ingrese su nombre" name="form-input"
+            formControlName="name">
+          <label class="label" for="reg-user"></label>
+        </div>
+        <div class="input-group">
+          <input type="email" class="form-input" placeholder="Correo" placeholder="Ingrese su correo" name="form-input"
+            id="reg-user" formControlName="email">
+          <label class="label" for="reg-user"></label>
+        </div>
+        <div class="input-group">
+          <input type="password" class="form-input" placeholder="Ingrese su contraseña" name="form-input" id="reg-pass"
+            formControlName="password">
+          <label class="label" for="reg-pass"></label>
+        </div>
+        <div class="input-group">
+          <button class="btn btn-primary btn-block m-2" value="Registrate" (click)="registrarse()" [disabled]="!formGroup.valid">Registrar</button>
+          <label>Ya tienes cuenta? <a routerLink="/login">Iniciar Sesión</a></label>
+        </div>
+      </form>
     </div>
   </div>
-</div> -->
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DDtechWeb</title>
-   
-</head>
-<body>
-    <div class="cod-container">
-        <div class="form-header">
-            <img src="../../../assets/images/LOGO CHATBOT 3.ico" width="100">
-            <h1>E comerce<span>Wanna</span></h1>
-        </div>
-
-        
-        <div class="form-content">
-            <form action="#" class="cod-form">
-                <div class="form-title">
-                    <h3>Regístrate Gratis</h3>
-                </div>
-
-                <div class="input-group">
-                  <input type="text" class="form-input" placeholder="Ingrese su nombre" name="form-input" [(ngModel)]="usuario.name">
-                  <label class="label" for="reg-user"></label>
-                </div>
-
-                <div class="input-group">
-                    <input type="email" class="form-input" placeholder="Correo" placeholder="Ingrese su correo" name="form-input" id="reg-user" [(ngModel)]="usuario.email">
-                    <label class="label" for="reg-user"></label>
-                </div>
-
-                <div class="input-group">
-                    <input type="password" class="form-input" placeholder="Ingrese su contraseña" name="form-input" id="reg-pass" [(ngModel)]="usuario.password">
-                    <label class="label" for="reg-pass"></label>
-                </div>
-
-                
-
-                <div class="input-group">
-                  
-                  <button class="btn btn-primary btn-block m-2"  value="Registrate" (click)="registrarse()">Registrar</button>
-                  <label>Ya tienes cuenta? <a routerLink="/login">Iniciar Sesión</a></label>
-                  
-
-
-
-                </div>
-
-               
-            </form>
-        </div>
-    </div>
-</body>
-</html>
+</div>

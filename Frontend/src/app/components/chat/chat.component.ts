@@ -23,33 +23,31 @@ export class ChatComponent implements OnInit {
   constructor(private authService: AuthService, private chatgptservice: ChatGptServiceService, private usersService: UsersServiceService) {
 
     this.mensajes = [];
-    
-   }
-
-  ngOnInit(): void {
-    this.mensajes = [];
-   // window.location.reload();
-    this.authService.getUserLogged().subscribe(usuario=> {
-      this.usuarioLogueado = usuario;
-      this.usersService.getUserById(usuario?.uid).subscribe(user => {
-        this.usuariodb = user[0];
-        let menasjeInicial = {
-          emisor: 'wannachat',
-          texto: `Hola ${this.usuariodb.nombre}, mi nombre es WannaChat. Cuéntame, ¿cómo puedo ayudarte hoy?`
-        }    
-        this.mensajes.push(menasjeInicial)
-      })
-      console.log("aaaaaaaaaaaaaa",usuario?.uid)
-    })
-
-
-    
   }
 
-  enviarMensaje(){
-    this.showProgressBar = true;
-    if(this.nuevoMensaje == "") return;
+  async ngOnInit(): Promise<void>{
+    this.mensajes = [];
+   // window.location.reload();
+    this.authService.getUserLogged().subscribe(async (usuario)=> {
+      this.usuarioLogueado = usuario;
+      console.log('creacion ChatComponent');
+      if (usuario) {
+        this.usersService.getUserById(usuario?.uid).subscribe((user) => {
+          this.usuariodb = user;
+          let menasjeInicial = {
+            emisor: 'wannachat',
+            texto: `Hola ${this.usuariodb.nombre}, mi nombre es WannaChat. Cuéntame, ¿cómo puedo ayudarte hoy?`,
+          };
+          this.mensajes.push(menasjeInicial);
+        });
+        console.log('aaaaaaaaaaaaaa', usuario?.uid);
+      }
+    })
+  }
 
+  async enviarMensaje(){
+    if(!this.nuevoMensaje) return;
+    this.showProgressBar = true;
     let mensaje = {
       emisor: this.usuarioLogueado.uid,
       texto: this.nuevoMensaje
@@ -73,17 +71,11 @@ export class ChatComponent implements OnInit {
         this.showProgressBar = false;
         this.role = 'user';
       }, 10);
-    }, err => {
-      console.log(err)
     })
-
     this.nuevoMensaje = "";
-    
     setTimeout(() => {
       this.scrollToTheLastElementByClassName()
     }, 10);
-    
-    
   }
 
   scrollToTheLastElementByClassName(){
@@ -93,5 +85,14 @@ export class ChatComponent implements OnInit {
     //@ts-ignore
     document.getElementById('contenedorMensajes')?.scrollTop=1000000;
   }
-
+  cerrarChat(){
+    this.mostrarChat = false;
+    const menasjeInicial = {
+      emisor: 'wannachat',
+      texto: `Hola ${this.usuariodb.nombre}, mi nombre es WannaChat. Cuéntame, ¿cómo puedo ayudarte hoy?`,
+    };
+    this.mensajes = [];
+    this.mensajes.push(menasjeInicial);
+    this.showProgressBar = false;
+  }
 }

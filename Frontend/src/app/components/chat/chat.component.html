@@ -1,34 +1,33 @@
 <div *ngIf="usuarioLogueado && !mostrarChat" class="chatIconContainer" (click)="mostrarChat = true">
-    <img src="https://cdn-icons-png.flaticon.com/512/134/134914.png?w=360" class="chatIcon" >
+  <img src="https://cdn-icons-png.flaticon.com/512/134/134914.png?w=360" class="chatIcon">
 </div>
 
-<div class="card text-center cardContainer" *ngIf="usuarioLogueado && mostrarChat" >
-    <div class="card-header">
-        WANNACHAT
-        <div class="closeIcon" (click)="mostrarChat=false">X
-
-        </div>
+<div class="card text-center cardContainer" *ngIf="usuarioLogueado && mostrarChat">
+  <div class="card-header">
+    WANNACHAT
+    <div class="closeIcon" (click)="cerrarChat()">X
     </div>
-    
-    <div class="card-body">
-        <div id="contenedorMensajes" class="contenedorMensajes h-100">
-            <div *ngFor="let mensaje of mensajes" class="msj p-2" style="margin-bottom: 3px;"
-            [ngClass]="(usuarioLogueado.uid==mensaje.emisor)?'enviado' : 'recibido'">
-                {{mensaje.texto}}
-            </div>
-            <div *ngIf="showProgressBar">
-                <img src="https://i.gifer.com/origin/ea/ea3fa7a07d9cb563d67168a6e45ed4e1.gif" width="200px" style="float: left;">
-            </div>
-        </div>    
+  </div>
+  <div class="card-body">
+    <div id="contenedorMensajes" class="contenedorMensajes h-100">
+      <div *ngFor="let mensaje of mensajes" class="msj p-2" style="margin-bottom: 3px;"
+        [ngClass]="(usuarioLogueado.uid==mensaje.emisor)?'enviado' : 'recibido'">
+        {{mensaje.texto}}
+      </div>
+      <div *ngIf="showProgressBar">
+        <img src="https://i.gifer.com/origin/ea/ea3fa7a07d9cb563d67168a6e45ed4e1.gif" width="200px"
+          style="float: left;">
+      </div>
     </div>
-
-    <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
-            <input type="text" class="form-control" placeholder="Ingrese su mensaje" [(ngModel)]="nuevoMensaje"
-            [ngModelOptions]="{standalone: true}">
-            <div class="input-group-append" (click)="enviarMensaje()">
-                <span class="input-group-text" id="basic-addon2">
-                    <img class="imgEnviar" src="https://cdn-icons-png.flaticon.com/512/3814/3814305.png" alt="send message" width="20px">
-                </span>
-            </div>
-    </form>
+  </div>
+  <form class="card-footer text-muted input-group" (ngSubmit)="enviarMensaje()">
+    <input type="text" class="form-control" placeholder="Ingrese su mensaje" [(ngModel)]="nuevoMensaje"
+      [ngModelOptions]="{standalone: true}">
+    <div class="input-group-append" (click)="enviarMensaje()">
+      <span class="input-group-text" id="basic-addon2">
+        <img class="imgEnviar" src="https://cdn-icons-png.flaticon.com/512/3814/3814305.png" alt="send message"
+          width="20px">
+      </span>
+    </div>
+  </form>
 </div>

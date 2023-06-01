@@ -1,4 +1,4 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import {
   Configuration,
   OpenAIApi,
@@ -10,6 +10,10 @@ import {
 } from 'openai';
 import { getTokens } from './lib/tokenizer';
 import { UserRepository } from './repositories/user-repository';
+import { CreateUserDto } from './dto/create-user.dto';
+import { PreferenciaRepository } from './repositories/preferencia-repository';
+import { PreferenciaDto } from './dto/preferencia.dto';
+import { PreferenciaResponseDto } from './dto/preferencia.response';
 const DEFAULT_MODEL_ID = 'text-davinci-003';
 const MODEL_ID_TURBO = 'gpt-3.5-turbo';
 const DEFAULT_TEMPERATURE = 0.6;
@@ -20,7 +24,10 @@ export class WebAiService {
   private openai: OpenAIApi;
   private OPENAI_KEY = process.env.OPENAI_API_KEY;
 
-  constructor(private userRepository: UserRepository) {
+  constructor(
+    private userRepository: UserRepository,
+    private readonly preferenciaRepository: PreferenciaRepository,
+  ) {
     const configuration = new Configuration({
       organization: process.env.ORGANIZATION_ID,
       apiKey: this.OPENAI_KEY,
@@ -44,13 +51,11 @@ export class WebAiService {
       };
       const response = await this.openai.createCompletion(params);
       const { data } = response;
-      //console.log('response chat-gpt: ', response.data.choices);
       if (data.choices.length) {
         return data.choices;
       }
       return response.data;
     } catch (error) {
-      //console.error('error message', error);
       return error;
     }
   }
@@ -79,7 +84,7 @@ export class WebAiService {
    * @param {string} content - The text of the message.
    * @returns The return is a string with the response of the bot.
    */
-  async getModelAnswerChat(
+  private async getModelAnswerChat(
     role: ChatCompletionRequestMessageRoleEnum,
     content: string,
   ) {
@@ -138,19 +143,6 @@ export class WebAiService {
       }
       return data;
     } catch (error) {
-      //console.error('******* ERROR *****', error);
-      // console.error('******* ERROR MESSAGE *********', error.message);
-      // console.error('******* ERROR NAME *********', error.name);
-      // console.error('******* ERROR STATUS *****', error.response.status);
-      // console.error(
-      //   '******* ERROR STATUS TEXT *****',
-      //   error.response.statusText,
-      // );
-      // console.error(
-      //   '******* ERROR DATA MESSAGE *****',
-      //   error.response.data.error.message,
-      // );
-      //const name = error.name ?? 'Error Desconocido';
       const messages = error.message ?? 'Internal server error';
       const status = error.response.status ?? 500;
       const description =
@@ -162,40 +154,6 @@ export class WebAiService {
       });
     }
   }
-
-
-   /**
-   * @description The function takes in a role and a question, and returns a model answer
-   * @param {ChatCompletionRequestMessageRoleEnum} role - *system/user/assistant*
-   * @param {string} idUsuario - Id user
-   * @returns The model answer for the question
-   */
-   async getUser(
-    idUsuario: string,
-  ) {
-    try {
-      return await this.getUserById(idUsuario);
-    } catch (error) {
-      //console.error('error en askQuestionUser');
-      return error;
-    }
-  }
-
-
-
-  /**
-   * @description It takes an ID, and returns a response
-   * @param {string} content - The text of the message.
-   * @returns The return is a string with the name of the user
-   */
-  async getUserById(
-    user: string,
-  ) {
-    return await this.userRepository.getUser(user);
-  }
-
-
-
   /**
    * @description It takes a role and a content, and returns a response
    * @param {ChatCompletionRequestMessageRoleEnum} role - *system/user/assistant*
@@ -205,7 +163,7 @@ export class WebAiService {
   async getModelAnswerChatGpt(
     role: ChatCompletionRequestMessageRoleEnum,
     content: string,
-    preferences: any
+    preferences: string,
   ) {
     try {
       const reqMessages: ChatCompletionRequestMessage[] = [{ role, content }];
@@ -231,7 +189,7 @@ export class WebAiService {
         return 'palabra inapropiada';
       }
       const prompt = `Eres asistente IA personalizado para ayudar a comprar ${preferences}.
-                      Debes recomendar paginas para comprar y algunos productos cuando te lo pidan. 
+                      Debes recomendar paginas para comprar y algunos productos cuando te lo pidan.
                       Cuando recomiendes una pagina debes incluir su sitio web. Tus respuestas deben ser cortas.`;
       tokenCount += getTokens(prompt);
 
@@ -263,19 +221,6 @@ export class WebAiService {
       }
       return data;
     } catch (error) {
-      //console.error('******* ERROR *****', error);
-      // console.error('******* ERROR MESSAGE *********', error.message);
-      // console.error('******* ERROR NAME *********', error.name);
-      // console.error('******* ERROR STATUS *****', error.response.status);
-      // console.error(
-      //   '******* ERROR STATUS TEXT *****',
-      //   error.response.statusText,
-      // );
-      // console.error(
-      //   '******* ERROR DATA MESSAGE *****',
-      //   error.response.data.error.message,
-      // );
-      //const name = error.name ?? 'Error Desconocido';
       const messages = error.message ?? 'Internal server error';
       const status = error.response.status ?? 500;
       const description =
@@ -288,4 +233,49 @@ export class WebAiService {
     }
   }
 
+  async createUserSvc(user: CreateUserDto) {
+    return await this.userRepository.createUser(user);
+  }
+  /**
+   * @description It takes an ID, and returns a response
+   * @param {string} content - The text of the message.
+   * @returns The return is a string with the name of the user
+   */
+  async getUserByIdSvc(userId: string) {
+    const res = await this.userRepository.getUserById(userId);
+    if(!res){
+      throw new HttpException(
+        'No se encontro el usuario ' + userId,
+        HttpStatus.NOT_FOUND,
+      );
+    }
+    return res;
+  }
+
+  async createPreferenciaSvc(preferencia: PreferenciaDto){
+    return await this.preferenciaRepository.createPreferencia(preferencia);
+  }
+
+  async getPreferenciaByUserSvc(userId:string){
+    const user = await this.getUserByIdSvc(userId);
+    if (!user) {
+      throw new HttpException(
+        'No se encontro el usuario ' + userId,
+        HttpStatus.NOT_FOUND,
+      );
+    }
+    const res = await this.preferenciaRepository.getPreferenciaByUsuario(
+      userId,
+    );
+    if (!res) {
+      throw new HttpException(
+        'No se encontro preferencias para el usuario ' + userId,
+        HttpStatus.NOT_FOUND,
+      );
+    }
+    const data: PreferenciaResponseDto = {
+      preferencias: res.preferencias,
+    };
+    return data;
+  }
 }

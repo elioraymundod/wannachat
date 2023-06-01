@@ -1,6 +1,9 @@
 import {
   Body,
+  ClassSerializerInterceptor,
   Controller,
+  Get,
+  Param,
   Post,
   UseInterceptors,
   UsePipes,
@@ -10,6 +13,8 @@ import { WebAiService } from './web-ai.service';
 import { IdUser, ModelAnswer, ModelUser } from './models/model-answer';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { ErrorsInterceptor } from './interceptors/errors/errors.interceptor';
+import { CreateUserDto } from './dto/create-user.dto';
+import { PreferenciaDto } from './dto/preferencia.dto';
 
 @ApiTags('web-ai')
 @Controller('web-ai')
@@ -50,22 +55,47 @@ export class WebAiController {
     return await this.webAiSvc.askQuestionUser(role, content);
   }
 
-
-  /**
-   * It takes in a JSON object with two properties, role and content, and returns a JSON object with
-   * two properties, role and content
-   * @param {IdUser} data - ModelAnswer
-   * @returns User data
-   */
-  @Post('/get/usuario')
+  @Get('/obtener-usuario/:idUsuario')
   @UsePipes(ValidationPipe)
   @ApiOperation({
-    description:
-      'Metodo para obtener la informacion de un usuario',
+    description: 'Metodo para obtener la informacion de un usuario',
   })
   @UseInterceptors(ErrorsInterceptor)
-  async getUserById(@Body() data: IdUser) {
-    const { idUsuario } = data;
-    return await this.webAiSvc.getUser(idUsuario);
+  @UseInterceptors(ClassSerializerInterceptor)
+  async getUserById(@Param('idUsuario') idUsuario: string) {
+    return await this.webAiSvc.getUserByIdSvc(idUsuario);
+  }
+
+  @Post('/crear-usuario')
+  @UsePipes(ValidationPipe)
+  @ApiOperation({
+    description: 'Metodo para crear un usuario',
+  })
+  @UseInterceptors(ErrorsInterceptor)
+  @UseInterceptors(ClassSerializerInterceptor)
+  async createUser(@Body() user: CreateUserDto) {
+    return await this.webAiSvc.createUserSvc(user);
+  }
+
+  @Post('/crear-preferencia')
+  @UsePipes(ValidationPipe)
+  @ApiOperation({
+    description: 'Metodo para crear un preferencia',
+  })
+  @UseInterceptors(ErrorsInterceptor)
+  @UseInterceptors(ClassSerializerInterceptor)
+  async createPreferencia(@Body() preferencia: PreferenciaDto) {
+    return await this.webAiSvc.createPreferenciaSvc(preferencia);
+  }
+
+  @Get('/obtener-preferencias/:idUsuario')
+  @UsePipes(ValidationPipe)
+  @ApiOperation({
+    description: 'Metodo para obtener las preferencias de un usuario',
+  })
+  @UseInterceptors(ErrorsInterceptor)
+  @UseInterceptors(ClassSerializerInterceptor)
+  async getPreferenciaByUser(@Param('idUsuario') idUsuario: string) {
+    return await this.webAiSvc.getPreferenciaByUserSvc(idUsuario);
   }
 }
